@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Birthday palindrome</title>
 </head>
 <body>
     <h1>Is Your Birth Date a Palindrome?</h1>
+    <p>Enter your DOB and we will check if any of all 6 formats of your birt date is palindrome or not.If it's not a palindrome, we will tell you the next/previous near date which is a palindrome. we will also tell you for how many days you have missed it!</p>
     <input type="date" id="bday-input"/>
     <button id="show-btn">Show</button>
+    <div class="output-block">
     <p id="result"></p>
+    </div>
+    <div class="portfolio">
+    <a href="https://clbydanish.netlify.app/">--project by Danish Zahid--</a>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
