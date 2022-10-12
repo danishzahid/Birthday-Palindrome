@@ -1,3 +1,36 @@
+var dateInput = document.querySelector("#bday-input");
+var showBtn = document.querySelector("#show-btn");
+var result = document.querySelector("#result");
+
+function clickHandler(e){
+    var bdayStr = dateInput.value;  //yyyy-mm-dd
+
+    if(bdayStr !== "" ){
+        var listOfdate = bdayStr.split("-");  //['yyyy'. 'mm', 'dd']
+        
+        var date = {
+            day : Number(listOfdate[2]), //yyyy
+            month : Number(listOfdate[1]), //mm
+            year : Number(listOfdate[0])  //dd
+
+        };
+
+        var isPalindrome2 = checkPalindromeforAll(date);
+
+        if(isPalindrome2){
+            result.innerText = " Yay! Your BirthDay is Palindrome!!!";
+        }
+        else{
+            var  [count, nextDate] = getNextPalindromDate(date);
+            result.innerText = `Nope!! Yr Bday is not a palindrome. The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}. You missed it by ${count} days. `
+        }
+    }
+}
+
+showBtn.addEventListener("click", clickHandler);
+
+
+
 function reverseStr(str){
   
     return str.split('').reverse().join('');
@@ -6,10 +39,12 @@ function reverseStr(str){
 function isPalindrome(str){
     var reversedStr = reverseStr(str);
     if(str===reversedStr){
-        return true;
-    }
+        return true ;
+    }else{
     return false;
+    }
 }
+
 
 function convertToStr(date){
     var dateStr = {day:"", month:"", year:""};
@@ -29,6 +64,8 @@ function convertToStr(date){
     }
 
     dateStr.year = date.year.toString();
+
+    return dateStr;
 }
 
 function getAllDateFormats(date){
@@ -166,34 +203,4 @@ function getNextPalindromDate(date){
 //     return [count, prevDate];
 // }
 
-var dateInput = document.querySelector("#bday-input");
-var showBtn = document.querySelector("#show-btn");
-var result = document.querySelector("#result");
-
-function clickHandler(e){
-    var bdayStr = dateInput.value;
-
-    if(bdayStr !== "" ){
-        var listOfdate = bdayStr.split("-");
-        
-        var date = {
-            day : Number(listOfdate[2]),
-            month : Number(listOfdate[1]),
-            year : Number(listOfdate[0])
-
-        };
-
-        var isPalindrome = checkPalindromeforAll(date);
-
-        if(isPalindrome){
-            result.innerText = " Yay! Your BirthDay is Palindrom!!!";
-        }
-        else{
-            var [count, nextDate] = getNextPalindromDate(date);
-            result.innerText = "The next palindrom date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, You missed it by ${count} days";
-        }
-    }
-}
-
-showBtn.addEventListener("click", clickHandler);
 
